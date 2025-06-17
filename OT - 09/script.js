@@ -20,46 +20,46 @@ valor do saldo, garantindo que o saldo não fique negativo.
 
 */
 
-/* 01 */ 
-class Animal{
-    constructor(nome, som){
+/* 01 */
+class Animal {
+    constructor(nome, som) {
         this.nome = nome;
         this.som = som;
     }
-    falar(){
+    falar() {
         console.log(`Som do animal: ${this.som}`);
     }
 }
 
 /* 02 */
 
-class Veiculo{
-    constructor(marca,modelo,velMaxima){
+class Veiculo {
+    constructor(marca, modelo, velMaxima) {
         this.marca = marca;
         this.modelo = modelo;
         this.velMaxima = velMaxima;
     }
 
-    descricao(){
+    descricao() {
         console.log(`Descrição do Carro: ${this.marca}, ${this.modelo}, ${this.velMaxima}`)
     }
 }
 
 /* 03 */
 
-class Estudante{
-    constructor(nome, notas){
+class Estudante {
+    constructor(nome, notas) {
         this.nome = nome;
         this.notas = notas;
     }
 
-    calcularMedia(){
-        if(this.notas.length === 0){
+    calcularMedia() {
+        if (this.notas.length === 0) {
             return 0;
         }
         let soma = 0;
 
-        for(let notasBim of this.notas){
+        for (let notasBim of this.notas) {
             soma += notasBim;
         }
 
@@ -67,6 +67,56 @@ class Estudante{
     }
 }
 
-let estudante1 = new Estudante("Ronaldo", [10,9,10,8]);
+let estudante1 = new Estudante("Ronaldo", [10, 9, 10, 8]);
 
-console.log(`A média final do aluno ${estudante1.nome} é: ${estudante1.calcularMedia()}`)
+console.log(`A média final do aluno ${estudante1.nome} é: ${estudante1.calcularMedia()}`);
+
+/* 04 */
+
+class utilitario {
+    static conversorTemp(Temperatura) {
+        return (Temperatura * 9 / 5) + 32;
+    }
+}
+
+/* 05 */
+
+class Jogo {
+
+   static numeroInteiroAleatorio(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    static adivinhaNumero(numero) {
+        const numeroSorteado = this.numeroInteiroAleatorio(0, 3);
+    
+        if (numero === numeroSorteado) {
+            console.log(`Você acertou! O número sorteado foi: ${numeroSorteado}`);
+        } else {
+            console.log(`Você errou! O número correto era ${numeroSorteado}`);
+        }
+    }
+}
+
+Jogo.adivinhaNumero(2);
+
+/* 06 */ 
+
+class ContaBancaria{
+    #saldo;
+    constructor(saldoInicial){
+        this.#saldo = saldoInicial;
+    }
+
+    getSaldo(valor){
+        if(valor > this.#saldo){
+            console.log("Você não tem saldo suficiente")
+        }else{
+            console.log("Saque efetuado com sucesso")
+        }
+    }
+}
+
+let pessoa = new ContaBancaria(10);
+
+pessoa.getSaldo(10);
